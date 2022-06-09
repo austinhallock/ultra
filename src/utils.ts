@@ -51,17 +51,31 @@ export function isGetRequest(request: Request) {
   return request.method === "GET";
 }
 
-export function toCompilerUrl(path: string, pathPrefix: string) {
-  return join(pathPrefix, `${path}.js`);
+export function shouldCompileToJs(extension: string) {
+  return ['.jsx', '.js', '.tsx', '.ts'].includes(extension);
+}
+
+export function shouldCompileToFakeCssModule(extension: string) {
+  return extension === '.css';
+}
+
+export function toCompilerUrl(path: string, pathPrefix?: string) {
+  const compiledPath = `${path}.compiled.js`;
+  return pathPrefix ? join(pathPrefix, compiledPath) : compiledPath;
 }
 
 export function getReferringScriptUrl(request: Request) {
   return new URL(request.referrer || request.url);
 }
 
-export function toLocalPathname(pathname: string, pathPrefix: string) {
-  const extension = extname(pathname);
-  return pathname.replace(pathPrefix, "").slice(0, -extension.length);
+export function toLocalPathnameWithoutJsExt(pathname: string, pathPrefix: string) {
+  const localPathName = pathname.replace(pathPrefix, "")
+  const extension = extname(localPathName);
+  const compiledPostfix = `.compiled${extension}`;
+  const hasCompiledPostfix = localPathName.endsWith(compiledPostfix);
+  return hasCompiledPostfix
+    ? localPathName.slice(0, -compiledPostfix.length)
+    : localPathName;
 }
 
 export function toUrl(path: string) {

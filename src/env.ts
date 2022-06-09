@@ -5,7 +5,7 @@ const env = resolveEnv(Deno.env.toObject());
 /**
  * A boolean indicating if Ultra is running in "dev" mode.
  */
-export const isDev = env.mode === "dev";
+export const isDev = env.mode === "development";
 /**
  * The origin the server is listening on.
  * @default "http://localhost:{port}"

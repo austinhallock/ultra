@@ -1,5 +1,6 @@
 import {
   debug,
+  extname,
   ExportAllDeclaration,
   ExportNamedDeclaration,
   resolveSpecifier,
@@ -11,6 +12,11 @@ import type {
   ParsedImportMap,
   StringLiteral,
 } from "../deps.ts";
+import {
+  toCompilerUrl,
+  shouldCompileToJs,
+  shouldCompileToFakeCssModule
+} from "../utils.ts"
 
 const log = debug("ultra:visitor");
 
@@ -82,13 +88,9 @@ export class ImportVisitor extends Visitor {
     const isExternalSpecifier = node.value.startsWith("http");
 
     if (isCompilerTarget || !isExternalSpecifier) {
-      if (
-        node.value.endsWith(".ts") ||
-        node.value.endsWith(".tsx") ||
-        node.value.endsWith(".jsx") ||
-        node.value.endsWith(".js")
-      ) {
-        node.value = `${node.value}.js`;
+      const extension = extname(node.value);
+      if (shouldCompileToJs(extension) || shouldCompileToFakeCssModule(extension)) {
+        node.value = toCompilerUrl(node.value, '');
       }
     }
 

@@ -20,6 +20,10 @@ export const devPlugin: Plugin = (app) => {
           app.sourceFiles.invalidate(toFileUrl(path));
         }
       }
+      // HACK: until dev.postMessage works
+      for (const socket of listeners) {
+        socket.send("reload");
+      }
       dev.postMessage({ type: "reload", paths: event.paths });
     }
   });

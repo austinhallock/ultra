@@ -33,7 +33,7 @@ export const ultraPlugin: Plugin<PluginOptions> = async (
   };
 
   app.add("GET", `/${publicPath}/*`, publicHandler);
-  app.add("GET", `${compilerPath}*.(tsx|ts|js|jsx).js`, compileHandler);
+  app.add("GET", `${compilerPath}*.(tsx|ts|js|jsx|css)`, compileHandler);
 
   await app.resolveSources();
 
@@ -66,7 +66,32 @@ const responseTransformer: ResponseTransformer = (
           body.before(
             `<script id="__ultra_renderState">window.__ultra_renderState = ${
               JSON.stringify(context.state, replacer)
-            }</script>`,
+            }</script>
+            <script>
+              // HACK: until better dev server is implemented
+              function _ultra_socket_connect(shouldReloadOnConnect) {
+                const _ultra_socket = new WebSocket("ws://localhost:8001");
+                _ultra_socket.addEventListener("message", (e) => {
+                  console.log('socket message');
+                  
+                  if (e.data === "reload") {
+                    location.reload();
+                  }
+                });
+                if (shouldReloadOnConnect) {
+                  _ultra_socket.onopen = function() {
+                    window.location.reload();
+                  }
+                }
+                _ultra_socket.onclose = function(e) {
+                  console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+                  setTimeout(function() {
+                    _ultra_socket_connect(true);
+                  }, 1000);
+                };
+              }
+              _ultra_socket_connect();
+            </script>`,
             { html: true },
           );
         });
