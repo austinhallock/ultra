@@ -1,4 +1,5 @@
 import { debug, join, extname } from "../deps.ts";
+import { isDev } from "../env.ts";
 import {
   toLocalPathnameWithoutJsExt,
   shouldCompileToJs,
@@ -46,7 +47,7 @@ export function createCompileHandler(
 
       let output: string | null = null;
       let contentType = 'text/plain';
-      const cached = compilerCache.get(url.toString());
+      const cached = !isDev && compilerCache.get(url.toString());
 
       const extension = extname(url.toString());
 
@@ -62,7 +63,7 @@ export function createCompileHandler(
             url,
           });
 
-          compilerCache.set(url.toString(), new CachedString(output));
+          if (!isDev) compilerCache.set(url.toString(), new CachedString(output));
         }
         contentType = 'application/javascript';
       } else if (shouldCompileToFakeCssModule(extension)) {
