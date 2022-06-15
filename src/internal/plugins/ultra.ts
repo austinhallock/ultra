@@ -1,6 +1,7 @@
 import { ImportVisitor } from "../../ast/import.ts";
 import { join, serveDir } from "../../deps.ts";
 import type { ParsedImportMap } from "../../deps.ts";
+import { isDev } from "../../env.ts";
 import type {
   Plugin,
   RequestHandler,
@@ -67,7 +68,7 @@ const responseTransformer: ResponseTransformer = (
             `<script id="__ultra_renderState">window.__ultra_renderState = ${
               JSON.stringify(context.state, replacer)
             }</script>
-            <script>
+            ${isDev ? `<script>
               // HACK: until better dev server is implemented
               function _ultra_socket_connect(shouldReloadOnConnect) {
                 const _ultra_socket = new WebSocket("ws://localhost:8001");
@@ -91,7 +92,7 @@ const responseTransformer: ResponseTransformer = (
                 };
               }
               _ultra_socket_connect();
-            </script>`,
+            </script>` : ''}`,
             { html: true },
           );
         });
