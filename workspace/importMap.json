@@ -7,8 +7,10 @@
     "react-dom/client": "https://esm.sh/react-dom@18/client?dev",
     "react-dom/server": "https://esm.sh/react-dom@18/server?dev",
     "react-helmet": "https://esm.sh/react-helmet-async?deps=react@18&dev",
+    "react-streaming": "https://esm.sh/react-streaming?deps=react@18&dev",
+    "react-streaming/client": "https://esm.sh/react-streaming/client?deps=react@18&dev",
+    "react-streaming/server": "https://esm.sh/react-streaming/server?deps=react@18&dev",
     "wouter": "https://esm.sh/wouter?deps=react@18&dev",
-    "wouter/static-location": "https://esm.sh/wouter/static-location.js?deps=react@18&dev",
-    "@ultra/react": "../react.ts"
+    "wouter/static-location": "https://esm.sh/wouter/static-location.js?deps=react@18&dev"
   }
 }

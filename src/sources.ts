@@ -122,12 +122,7 @@ export async function resolveSourceUrls(
    * These paths are relative to the "from" parameter.
    */
   const remoteCompilerTargets = [
-    join("..", "react.ts"),
-    join(".", "react", "client.ts"),
-    join(".", "react", "useSsrData.ts"),
-    join(".", "react", "useStream.ts"),
-    join(".", "react", "ultraFetch.ts"),
-    join(".", "react", "utils.ts"),
+    join(".", "react", "client.ts")
   ];
 
   const localCompilerTargets = expandGlob(globPattern, globOptions);

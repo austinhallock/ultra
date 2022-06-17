@@ -1,10 +1,8 @@
 import type { ReactElement } from "react";
+import { renderToStream } from "react-streaming/server";
+
 import type { RenderOptions } from "./types.ts";
-import { createElement } from "react";
 import { LinkHeader } from "./links.ts";
-import { SsrDataProvider } from "./react/useSsrData.ts";
-import { StreamProvider } from "./react/useStream.ts";
-import { renderToStream } from "./stream.ts";
 
 export async function render(
   element: ReactElement,
@@ -12,23 +10,10 @@ export async function render(
 ) {
   const { strategy, bootstrapModules } = options;
 
-  element = createElement(SsrDataProvider, null, element);
-
-  // deno-lint-ignore prefer-const
-  let injectToStream: (chunk: string) => void;
-
-  element = createElement(
-    StreamProvider,
-    { value: { injectToStream: (chunk: string) => injectToStream(chunk) } },
-    element,
-  );
-
   const stream = await renderToStream(element, {
     bootstrapModules,
     disable: strategy === "static",
   });
-
-  injectToStream = stream.injectToStream;
 
   const links = new LinkHeader();
 

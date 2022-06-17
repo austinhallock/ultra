@@ -32,7 +32,7 @@ export const ultraloader = async ({ importMap, cache }) => {
     importMap.imports["wouter"],
     importMap.imports["swr"],
     importMap.imports["react-helmet"],
-    importMap.imports["ultra/cache"],
+    importMap.imports["react-stremaing"],
   ], (specifier) => {
     if (extname(specifier) === ".js") {
       return specifier;
