@@ -1,5 +1,5 @@
 import { Config, ImportMap } from "./types.ts";
-import { resolveFileUrl } from "./resolver.ts";
+import { resolveFileUrl, isRemoteSource } from "./resolver.ts";
 
 export async function resolveConfig(cwd: string): Promise<Config> {
   const CONFIG_ENV = Deno.env.get("config");
@@ -14,13 +14,13 @@ export async function resolveImportMap(
   config?: Config,
 ): Promise<ImportMap> {
   const IMPORT_MAP_ENV = Deno.env.get("importMap");
-  const importMapPath = resolveFileUrl(
-    cwd,
-    IMPORT_MAP_ENV || config?.importMap ||
-      "./importMap.json",
-  );
+  let importMapPath = IMPORT_MAP_ENV || config?.importMap || "./importMap.json"
+  
+  if (!isRemoteSource(importMapPath)) {
+    importMapPath = resolveFileUrl(cwd, importMapPath).toString();
+  }
 
-  const importMap = (await import(String(importMapPath), {
+  const importMap = (await import(importMapPath, {
     assert: { type: "json" },
   })).default;
 
