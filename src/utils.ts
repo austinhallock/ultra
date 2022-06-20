@@ -55,10 +55,6 @@ export function shouldCompileToJs(extension: string) {
   return ['.jsx', '.js', '.tsx', '.ts'].includes(extension);
 }
 
-export function shouldCompileToFakeCssModule(extension: string) {
-  return extension === '.css';
-}
-
 export function toCompilerUrl(path: string, pathPrefix?: string) {
   const compiledPath = `${path}.compiled.js`;
   return pathPrefix ? join(pathPrefix, compiledPath) : compiledPath;

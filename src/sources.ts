@@ -80,7 +80,7 @@ export class SourceFiles extends Map {
   }
 }
 
-const extensions = [".tsx", ".ts", ".jsx", ".js", ".css"];
+const extensions = [".tsx", ".ts", ".jsx", ".js"];
 const globPattern = `**/*+(${extensions.join("|")})`;
 
 /**

@@ -2,8 +2,7 @@ import { debug, join, extname } from "../deps.ts";
 import { isDev } from "../env.ts";
 import {
   toLocalPathnameWithoutJsExt,
-  shouldCompileToJs,
-  shouldCompileToFakeCssModule
+  shouldCompileToJs
 } from "../utils.ts";
 import type { RequestHandler } from "../types.ts";
 
@@ -66,31 +65,6 @@ export function createCompileHandler(
           if (!isDev) compilerCache.set(url.toString(), new CachedString(output));
         }
         contentType = 'application/javascript';
-      } else if (shouldCompileToFakeCssModule(extension)) {
-        // for css
-        // when swc and deno support css module asserts, we can probably get
-        // rid of this and just return the raw css
-        // https://github.com/denoland/deno/issues/11961
-        output = `let stylesheet
-const css = \`${sourceFile.code.replace(/\\/g, '\\\\').replace(/\`/g, '\\`')}\`
-try {
-  // partial support in browsers
-  // https://stackoverflow.com/a/57567930
-  stylesheet = new CSSStyleSheet();
-  stylesheet.replace(css);
-} catch (err) {
-  // hack to get stylesheet in browsers that don't support first method
-  const style = document.createElement('style');
-  style.innerText = css;
-  document.head.appendChild(style);
-  const { sheet } = style;
-  document.head.removeChild(style);
-  stylesheet = sheet;
-}
-export default stylesheet;`
-        contentType = 'application/javascript';
-        // output = sourceFile.code;
-        // contentType = getContentTypeByExtName(extension);
       } else {
         output = sourceFile.code
         contentType = getContentTypeByExtName(extension);

@@ -14,8 +14,7 @@ import type {
 } from "../deps.ts";
 import {
   toCompilerUrl,
-  shouldCompileToJs,
-  shouldCompileToFakeCssModule
+  shouldCompileToJs
 } from "../utils.ts"
 
 const log = debug("ultra:visitor");
@@ -89,7 +88,7 @@ export class ImportVisitor extends Visitor {
 
     if (isCompilerTarget || !isExternalSpecifier) {
       const extension = extname(node.value);
-      if (shouldCompileToJs(extension) || shouldCompileToFakeCssModule(extension)) {
+      if (shouldCompileToJs(extension)) {
         node.value = toCompilerUrl(node.value, '');
       }
     }
