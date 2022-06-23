@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import { hydrateRoot } from "react-dom/client";
+import { hydrateRoot } from "https://npm.tfl.dev/react-dom/client";
 import App from "./app.tsx";
 
 hydrateRoot(document, <App />);

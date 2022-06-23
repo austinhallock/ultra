@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import { createElement } from "https://npm.tfl.dev/react";
 import { Application } from "./app.ts";
 import type {
   Mode,

@@ -9,7 +9,7 @@
   "importMap": "./importMap.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    "jsxImportSource": "https://npm.tfl.dev/react",
     "lib": [
       "dom",
       "dom.iterable",

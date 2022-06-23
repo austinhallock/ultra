@@ -1,4 +1,4 @@
-import { createContext, createElement, ReactNode, useContext } from "react";
+import { createContext, createElement, ReactNode, useContext } from "https://npm.tfl.dev/react";
 import { useStream } from "./useStream.ts";
 import { assert, isClientSide, isServerSide } from "./utils.ts";
 import { parse, stringify } from "https://esm.sh/@brillout/json-s";

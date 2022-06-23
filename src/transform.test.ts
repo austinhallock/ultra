@@ -4,7 +4,7 @@ import { assertEquals } from "./deps.dev.ts";
 Deno.test("transformSource", async (t) => {
   const importMap = {
     imports: {
-      "react": "https://esm.sh/react",
+      "https://npm.tfl.dev/react": "https://esm.sh/react",
     },
   };
 
@@ -12,7 +12,7 @@ Deno.test("transformSource", async (t) => {
 
   await t.step("resolves import specifiers correctly", async () => {
     const code = await transformSource({
-      source: `import React from "react";`,
+      source: `import React from "https://npm.tfl.dev/react";`,
       sourceUrl,
       importMap,
     });

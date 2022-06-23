@@ -1,4 +1,4 @@
-import type { FunctionComponent } from "react";
+import type { FunctionComponent } from "https://npm.tfl.dev/react";
 import { Application } from "./app.ts";
 import { Context } from "./context.ts";
 import type { HTMLRewriter, ParseOptions } from "./deps.ts";

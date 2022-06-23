@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/server";
+import React from "https://npm.tfl.dev/react";
+import ReactDOM from "https://npm.tfl.dev/react-dom/server";
 
 import {
   AppComponent,

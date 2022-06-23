@@ -27,12 +27,9 @@ const preloader = async (path, map, cache) => {
 
 export const ultraloader = async ({ importMap, cache }) => {
   const link = await preloader([
-    importMap.imports["react"],
-    importMap.imports["react-dom"],
-    importMap.imports["wouter"],
-    importMap.imports["swr"],
-    importMap.imports["react-helmet"],
-    importMap.imports["ultra/cache"],
+    importMap.imports["https://npm.tfl.dev/react"],
+    importMap.imports["https://npm.tfl.dev/react-dom"],
+    importMap.imports["https://npm.tfl.dev/react-helmet-async@1"],
   ], (specifier) => {
     if (extname(specifier) === ".js") {
       return specifier;

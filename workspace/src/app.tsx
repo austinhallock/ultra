@@ -1,6 +1,6 @@
-import { Helmet, HelmetProvider } from "react-helmet";
+import { Helmet, HelmetProvider } from "https://npm.tfl.dev/react-helmet-async@1";
 import { Link, Route, Switch } from "wouter";
-import React, { createContext, lazy, Suspense } from "react";
+import React, { createContext, lazy, Suspense } from "https://npm.tfl.dev/react";
 import Component from "./component.jsx";
 import type { RenderState } from "../../server.ts";
 

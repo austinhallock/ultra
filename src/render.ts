@@ -1,6 +1,6 @@
-import type { ReactElement } from "react";
+import type { ReactElement } from "https://npm.tfl.dev/react";
 import type { RenderOptions } from "./types.ts";
-import { createElement } from "react";
+import { createElement } from "https://npm.tfl.dev/react";
 import { LinkHeader } from "./links.ts";
 import { SsrDataProvider } from "./react/useSsrData.ts";
 import { StreamProvider } from "./react/useStream.ts";

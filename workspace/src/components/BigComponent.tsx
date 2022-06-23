@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from "https://npm.tfl.dev/react";
 import { useAsync } from "@ultra/react";
 
 export default function BigComponent({ children }: { children?: ReactNode }) {

@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { renderToReadableStream } from "react-dom/server";
+import type { ReactNode } from "https://npm.tfl.dev/react";
+import { renderToReadableStream } from "https://npm.tfl.dev/react-dom/server";
 import { assert } from "./react/utils.ts";
 
 /**

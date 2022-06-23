@@ -123,11 +123,11 @@ export async function resolveSourceUrls(
    */
   const remoteCompilerTargets = [
     join("..", "react.ts"),
-    join(".", "react", "client.ts"),
-    join(".", "react", "useSsrData.ts"),
-    join(".", "react", "useStream.ts"),
-    join(".", "react", "ultraFetch.ts"),
-    join(".", "react", "utils.ts"),
+    join(".", "https://npm.tfl.dev/react", "client.ts"),
+    join(".", "https://npm.tfl.dev/react", "useSsrData.ts"),
+    join(".", "https://npm.tfl.dev/react", "useStream.ts"),
+    join(".", "https://npm.tfl.dev/react", "ultraFetch.ts"),
+    join(".", "https://npm.tfl.dev/react", "utils.ts"),
     // FIXME: HACK: config option to add compiler targets
     "https://tfl.dev/@truffle/ultra-server@0.1.1/client.tsx",
     "https://tfl.dev/@truffle/ultra-server@0.1.1/app.tsx",

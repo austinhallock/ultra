@@ -1,5 +1,5 @@
-import type { FunctionComponent } from "react";
-import type { HelmetServerState } from "react-helmet";
+import type { FunctionComponent } from "https://npm.tfl.dev/react";
+import type { HelmetServerState } from "https://npm.tfl.dev/react-helmet-async@1";
 import { ImportMapResolver } from "../importMapResolver.ts";
 import type { ImportMap } from "../types.ts";
 
