@@ -133,6 +133,9 @@ export async function resolveSourceUrls(
     "https://tfl.dev/@truffle/ultra-server@0.2.0/app.tsx",
     "https://tfl.dev/@truffle/ultra-server@0.2.0/setup.jsx",
     "https://tfl.dev/@truffle/ultra-server@0.2.0/fs-router.tsx",
+    // @truffle/ultra-server imports this directly
+    // TODO: replace react.ts with https://github.com/brillout/react-streaming
+    "https://raw.githubusercontent.com/austinhallock/ultra/truffle/react.ts",
   ];
 
   const localCompilerTargets = expandGlob(globPattern, globOptions);
