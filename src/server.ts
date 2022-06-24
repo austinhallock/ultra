@@ -31,11 +31,11 @@ export default async function createServer(
     new URL("", import.meta.url),
   );
 
-  let { bootstrapModules = [] } = options;
+  const { bootstrapModules = [] } = options;
 
-  bootstrapModules = bootstrapModules.map(
-    (bootstrapModule) => toCompilerUrl(bootstrapModule, compilerPath),
-  );
+  // bootstrapModules = bootstrapModules.map(
+  //   (bootstrapModule) => toCompilerUrl(bootstrapModule, compilerPath),
+  // );
 
   const renderHandler: RequestHandler = async (context) => {
     const strategy = renderStrategy
