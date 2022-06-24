@@ -122,20 +122,11 @@ export async function resolveSourceUrls(
    * These paths are relative to the "from" parameter.
    */
   const remoteCompilerTargets = [
-    join("..", "react.ts"),
-    join(".", "https://npm.tfl.dev/react", "client.ts"),
-    join(".", "https://npm.tfl.dev/react", "useSsrData.ts"),
-    join(".", "https://npm.tfl.dev/react", "useStream.ts"),
-    join(".", "https://npm.tfl.dev/react", "ultraFetch.ts"),
-    join(".", "https://npm.tfl.dev/react", "utils.ts"),
     // FIXME: HACK: config option to add compiler targets
     "https://tfl.dev/@truffle/ultra-server@0.2.0/client.tsx",
     "https://tfl.dev/@truffle/ultra-server@0.2.0/app.tsx",
     "https://tfl.dev/@truffle/ultra-server@0.2.0/setup.jsx",
     "https://tfl.dev/@truffle/ultra-server@0.2.0/fs-router.tsx",
-    // @truffle/ultra-server imports this directly
-    // TODO: replace react.ts with https://github.com/brillout/react-streaming
-    "https://raw.githubusercontent.com/austinhallock/ultra/truffle/react.ts",
   ];
 
   const localCompilerTargets = expandGlob(globPattern, globOptions);
