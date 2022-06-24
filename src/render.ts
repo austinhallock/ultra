@@ -4,7 +4,7 @@ import type { RenderOptions } from "./types.ts";
 import { LinkHeader } from "./links.ts";
 // import { SsrDataProvider } from "./react/useSsrData.ts";
 // import { StreamProvider } from "./react/useStream.ts";
-import { renderToStream } from "https://npm.tfl.dev/react-streaming@0";
+import { renderToStream } from "https://npm.tfl.dev/react-streaming@0/server";
 
 export async function render(
   element: ReactElement,
