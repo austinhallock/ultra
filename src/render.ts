@@ -4,7 +4,10 @@ import type { RenderOptions } from "./types.ts";
 import { LinkHeader } from "./links.ts";
 // import { SsrDataProvider } from "./react/useSsrData.ts";
 // import { StreamProvider } from "./react/useStream.ts";
-import { renderToStream } from "https://npm.tfl.dev/react-streaming@0/server";
+
+// FIXME: https://github.com/esm-dev/esm.sh/issues/78
+// context files are bundled (bad). so we need to roll with our own
+import { renderToStream } from "https://tfl.dev/@truffle/ultra-server@0.2.0/react-streaming/renderToStream.js";
 
 export async function render(
   element: ReactElement,
