@@ -129,10 +129,10 @@ export async function resolveSourceUrls(
     join(".", "https://npm.tfl.dev/react", "ultraFetch.ts"),
     join(".", "https://npm.tfl.dev/react", "utils.ts"),
     // FIXME: HACK: config option to add compiler targets
-    "https://tfl.dev/@truffle/ultra-server@0.1.1/client.tsx",
-    "https://tfl.dev/@truffle/ultra-server@0.1.1/app.tsx",
-    "https://tfl.dev/@truffle/ultra-server@0.1.1/setup.jsx",
-    "https://tfl.dev/@truffle/ultra-server@0.1.1/fs-router.tsx",
+    "https://tfl.dev/@truffle/ultra-server@0.2.0/client.tsx",
+    "https://tfl.dev/@truffle/ultra-server@0.2.0/app.tsx",
+    "https://tfl.dev/@truffle/ultra-server@0.2.0/setup.jsx",
+    "https://tfl.dev/@truffle/ultra-server@0.2.0/fs-router.tsx",
   ];
 
   const localCompilerTargets = expandGlob(globPattern, globOptions);
