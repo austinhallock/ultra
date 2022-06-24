@@ -9,20 +9,21 @@ export async function resolveConfig(cwd: string): Promise<Config> {
   return config;
 }
 
-export async function resolveImportMap(
+export function resolveImportMap(
   cwd: string,
   config?: Config,
 ): Promise<ImportMap> {
-  const IMPORT_MAP_ENV = Deno.env.get("importMap");
-  let importMapPath = IMPORT_MAP_ENV || config?.importMap || "./importMap.json"
+  // const IMPORT_MAP_ENV = Deno.env.get("importMap");
+  // let importMapPath = IMPORT_MAP_ENV || config?.importMap || "./importMap.json"
   
-  if (!isRemoteSource(importMapPath)) {
-    importMapPath = resolveFileUrl(cwd, importMapPath).toString();
-  }
+  // if (!isRemoteSource(importMapPath)) {
+  //   importMapPath = resolveFileUrl(cwd, importMapPath).toString();
+  // }
 
-  const importMap = (await import(importMapPath, {
-    assert: { type: "json" },
-  })).default;
+  // const importMap = (await import(importMapPath, {
+  //   assert: { type: "json" },
+  // })).default;
 
-  return importMap;
+  // return importMap;
+  return Promise.resolve({});
 }
