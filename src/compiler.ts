@@ -115,6 +115,7 @@ export class Compiler {
           react: {
             development: isDevelopment,
             runtime: "automatic",
+            importSource: "https://npm.tfl.dev/react",
           },
         },
         target: "es2021",
