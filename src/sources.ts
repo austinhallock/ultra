@@ -122,11 +122,6 @@ export async function resolveSourceUrls(
    * These paths are relative to the "from" parameter.
    */
   const remoteCompilerTargets = [
-    // FIXME: HACK: config option to add compiler targets
-    "https://tfl.dev/@truffle/ultra-server@0.2.0/client.tsx",
-    "https://tfl.dev/@truffle/ultra-server@0.2.0/app.tsx",
-    "https://tfl.dev/@truffle/ultra-server@0.2.0/setup.jsx",
-    "https://tfl.dev/@truffle/ultra-server@0.2.0/fs-router.tsx",
   ];
 
   const localCompilerTargets = expandGlob(globPattern, globOptions);
