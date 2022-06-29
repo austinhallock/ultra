@@ -4,7 +4,7 @@ import { LinkHeader } from "./links.ts";
 
 // FIXME: https://github.com/esm-dev/esm.sh/issues/78
 // context files are bundled (bad). so we need to roll with our own
-import { renderToStream } from "https://tfl.dev/@truffle/ultra-server@0.2.0/react-streaming/renderToStream.js";
+import { renderToStream } from "https://tfl.dev/@truffle/ultra-server@0.3.0/react-streaming/renderToStream.js";
 
 export async function render(
   element: ReactElement,
